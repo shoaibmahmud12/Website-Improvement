@@ -3,32 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Community Library</title>
+    <title>Local Gardening Community</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>Welcome to the Community Library</h1>
+        <h1>Welcome to the Local Gardening Community</h1>
     </header>
     <main>
-        <section id="book-search">
-            <h2>Book Search</h2>
-            <input type="text" id="searchQuery" placeholder="Search for books">
-            <button type="button" onclick="searchBooks()">Search</button>
-            <div id="searchResults"></div>
+        <section id="plant-database">
+            <h2>Plant Database</h2>
+            <label for="filter">Filter by type:</label>
+            <select id="filter" onchange="filterPlants()">
+                <option value="all">All</option>
+                <option value="flowers">Flowers</option>
+                <option value="vegetables">Vegetables</option>
+                <option value="fruits">Fruits</option>
+            </select>
+            <div id="plantList"></div>
         </section>
-        <section id="book-recommendations">
-            <h2>Recommend a Book</h2>
-            <form id="recommendationForm">
-                <input type="text" id="bookTitle" placeholder="Book Title">
-                <input type="text" id="authorName" placeholder="Author Name">
-                <button type="submit">Submit Recommendation</button>
+        <section id="community-forum">
+            <h2>Community Forum</h2>
+            <form id="forumPostForm">
+                <input type="text" id="postTitle" placeholder="Post Title">
+                <textarea id="postContent" placeholder="Share your gardening tips..."></textarea>
+                <button type="submit">Post</button>
             </form>
-            <p id="recommendationConfirmation"></p>
         </section>
     </main>
     <footer>
-        <p>© 2023 Community Library</p>
+        <p>© 2023 Local Gardening Community</p>
     </footer>
     <script src="script.js"></script>
 </body>

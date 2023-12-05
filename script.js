@@ -1,32 +1,29 @@
-function searchBooks() {
-    const searchQuery = document.getElementById('searchQuery').value;
+function filterPlants() {
+    const filter = document.getElementById('filter').value;
 
-    if (searchQuery.length === 0) {
-        document.getElementById('searchResults').innerText = 'Please enter a search query.';
-    } else {
+    let plants = [
+        { type: 'flowers', names: ['Rose', 'Tulip', 'Daisy'] },
+        { type: 'vegetables', names: ['Tomato', 'Cucumber', 'Pepper'] },
+        { type: 'fruits', names: ['Apple', 'Pear', 'Cherry'] }
+    ];
 
-        let results = ['Book 1 by Author A', 'Book 2 by Author B', 'Book 3 by Author C'];
-        let resultsHTML = '';
-        results.forEach(function(result) {
-            resultsHTML += '<p>' + result + '</p>'; 
-        });
-        document.getElementById('searchResults').innerHTML = 'Nice book';
-    }
+    let filteredPlants = plants.find(item => item.type === filter)?.names || [];
+    let plantListHTML = '';
+    filteredPlants.forEach(function (plant) {
+        plantListHTML += '<p>' + plant + '</p>';
+    });
+    document.getElementById('plantList').innerHTML = plantListHTML;
 }
 
-document.getElementById('recommendationForm').addEventListener('submit', function(event) {
+document.getElementById('forumPostForm').addEventListener('submit', function (event) {
     event.preventDefault();
 
-    const bookTitle = document.getElementById('bookTitle').value.trim();
-    const authorName = document.getElementById('authorName').value.trim();
+    const postTitle = document.getElementById('postTitle').value;
+    const postContent = document.getElementById('postContent').value;
 
-    let confirmationMessage = '';
-    if (bookTitle !== '' && authorName !== '') {
-        confirmationMessage = `Thank you for recommending "${bookTitle}" by ${authorName}.`;
+    if (postTitle === '' || postContent === '') {
+        alert('Please fill in both title and content for your post.');
     } else {
-        confirmationMessage = 'Please enter both book title and author name.';
+        alert(`Your post titled "${postTitle}" has been added.`);
     }
-
-    document.getElementById('recommendationConfirmation').innerText = confirmationMessage;
 });
-
